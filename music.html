@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ma playlist</title>
+    <style>
+        body {
+            background-color: #f0f0f0; 
+            background-image: radial-gradient(#ccc 1.5px, transparent 1px);
+            background-size: 20px 20px; 
+        }
+
+        .highlight {
+        background-color: #2f343c;
+        color: white; 
+        }
+
+        .hr {
+            height:2px;
+            color:gray;
+            margin-top: 4vh;
+            border: none; 
+            border-top: 2px dashed #333; 
+            margin: 20px 0; 
+        }
+
+
+        .title {
+            margin-bottom: 1.5rem;
+        }
+
+        .main-desc {
+            line-height: 1.8;
+        }
+
+        .small {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .list-disc li {
+            color: #4a5568;
+        }
+
+        .shadow {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .shadow:hover {
+            transform: translateY(-5px);
+        }
+
+        .rounded-lg {
+            border: 1px solid #e2e8f0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/all.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-solid.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-regular.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-light.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/duotone.css"
+/>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <nav aria-label="Floating sidebar" class="fixed left-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur rounded-xl shadow-md p-2 z-50">
+      <ul class="flex flex-col items-center space-y-2">
+        <li class="relative">
+         <a href="index.html" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Home" data-tooltip-target="tooltip-home" data-tooltip-placement="right"><i class="fa-regular fa-house"></i></a>
+         <div id="tooltip-home" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            Home
+         </div>
+        </li>
+        <li class="relative">
+         <a href="profile.html" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Search" data-tooltip-target="tooltip-search" data-tooltip-placement="right"><i class="fa-regular fa-user"></i></a>
+         <div id="tooltip-search" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            CV
+         </div>
+        </li>
+        <li class="relative">
+         <a href="blog.html" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Messages" data-tooltip-target="tooltip-writings" data-tooltip-placement="right"><i class="fa-regular fa-pen-nib"></i></a>
+         <div id="tooltip-writings" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            Writings
+         </div>
+        </li>
+        <li class="relative">
+         <a href="music.html" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Messages" data-tooltip-target="tooltip-messages" data-tooltip-placement="right"><i class="fa-solid fa-music"></i></a>
+         <div id="tooltip-messages" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            Music
+         </div>
+        </li>
+      </ul>
+    </nav>
+
+<div>
+<main class="ms-12 p-12 font-mono">
+  <div class="max-w-4xl">
+    <div class="title">
+      <p class="text-2xl font-bold mb-2">My Playlist (emo) </p>
+      <p class="text-sm text-gray-600">mainly emo-- i mean, all of it. synced with my emo playlist</p>
+    </div>
+    <hr class="hr" />
+    
+    <div id="playlist-container" class="space-y-3">
+      <p class="text-gray-500 animate-pulse">Loading playlist...</p>
+    </div>
+  </div>
+</main>
+</div>
+
+<script>
+let currentAudio = null;
+let currentBtn = null;
+
+(async () => {
+  const container = document.getElementById('playlist-container');
+  try {
+    const res = await fetch('https://spotify-data.p.rapidapi.com/playlist_tracks/?id=32dj7wqxy6LfhUF1FLypXA&offset=0&limit=100', {
+      headers: {
+        'x-rapidapi-key': '26fc1d59eemshf42427b24d366e5p1cbde9jsn4e909cdc8ba6',
+        'x-rapidapi-host': 'spotify-data.p.rapidapi.com'
+      }
+    });
+
+    const { items } = await res.json();
+    container.innerHTML = '';
+
+    items?.forEach((item, i) => {
+      const t = item.track;
+      if (!t) return;
+
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-4 p-3 hover:bg-gray-100 rounded transition-colors group';
+      div.innerHTML = `
+        <span class="text-gray-400 font-medium min-w-8 text-right text-sm">${i + 1}</span>
+        <a href="${t.external_urls?.spotify || '#'}" target="_blank" 
+           class="font-semibold text-gray-900 hover:text-green-600 truncate flex-1 group-hover:underline">
+          ${t.artists?.[0]?.name || 'Unknown'} - ${t.name}
+        </a>
+      `;
+      container.appendChild(div);
+    });
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = '<p class="text-gray-500">Error loading playlist</p>';
+  }
+})();
+</script>
+
+
+    <script>
+        // buat tooltips
+      (function () {
+        const triggers = document.querySelectorAll('[data-tooltip-target]');
+        triggers.forEach(trigger => {
+          const id = trigger.getAttribute('data-tooltip-target');
+          const tip = document.getElementById(id.replace('#','')) || document.getElementById(id);
+          if (!tip) return;
+
+          const show = () => {
+            tip.classList.remove('opacity-0', 'translate-x-1', 'pointer-events-none');
+            tip.classList.add('opacity-100');
+          };
+          const hide = () => {
+            tip.classList.add('opacity-0', 'translate-x-1', 'pointer-events-none');
+            tip.classList.remove('opacity-100');
+          };
+
+          tip.classList.add('opacity-0', 'translate-x-1', 'pointer-events-none');
+          trigger.addEventListener('mouseenter', show);
+          trigger.addEventListener('focus', show);
+          trigger.addEventListener('mouseleave', hide);
+          trigger.addEventListener('blur', hide);
+          trigger.addEventListener('click', (e) => {
+            const href = trigger.getAttribute('href');
+            const isAnchor = trigger.tagName && trigger.tagName.toLowerCase() === 'a';
+            const isDummy = !href || href === '#' || href.trim() === '' || href.startsWith('javascript:') || href === 'javascript:void(0)';
+            if (isAnchor && !isDummy) {
+              hide();
+              return;
+            }
+            e.preventDefault();
+            if (tip.classList.contains('opacity-0')) show(); else hide();
+          });
+        });
+      })();
+ 
+  
+  </script>
+    
+  </body>
+</html>

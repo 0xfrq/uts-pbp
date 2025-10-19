@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>blogging</title>
+    <style>
+        body {
+            background-color: #f0f0f0; 
+            background-image: radial-gradient(#ccc 1.5px, transparent 1px);
+            background-size: 20px 20px; 
+        }
+
+        .highlight {
+        background-color: #2f343c;
+        color: white; 
+        }
+
+        .hr {
+            height:2px;
+            color:gray;
+            margin-top: 4vh;
+            border: none; 
+            border-top: 2px dashed #333; 
+            margin: 20px 0; 
+        }
+
+
+        .title {
+            margin-bottom: 1.5rem;
+        }
+
+        .main-desc {
+            line-height: 1.8;
+        }
+
+        .small {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .list-disc li {
+            color: #4a5568;
+        }
+
+        .shadow {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .shadow:hover {
+            transform: translateY(-5px);
+        }
+
+        .rounded-lg {
+            border: 1px solid #e2e8f0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/all.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-solid.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-regular.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/sharp-light.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v7.1.0/css/duotone.css"
+/>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <nav aria-label="Floating sidebar" class="fixed left-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur rounded-xl shadow-md p-2 z-50">
+      <ul class="flex flex-col items-center space-y-2">
+        <li class="relative">
+         <a href="index.html" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Home" data-tooltip-target="tooltip-home" data-tooltip-placement="right"><i class="fa-regular fa-house"></i></a>
+         <div id="tooltip-home" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            Home
+         </div>
+        </li>
+        <li class="relative">
+         <a href="profile.html" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Search" data-tooltip-target="tooltip-search" data-tooltip-placement="right"><i class="fa-regular fa-user"></i></a>
+         <div id="tooltip-search" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            CV
+         </div>
+        </li>
+        <li class="relative">
+         <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Messages" data-tooltip-target="tooltip-writings" data-tooltip-placement="right"><i class="fa-solid fa-pen-nib"></i></a>
+         <div id="tooltip-writings" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            Writings
+         </div>
+        </li>
+        <li class="relative">
+         <a href="music.html" class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 border-none hover:bg-gray-100" aria-label="Messages" data-tooltip-target="tooltip-messages" data-tooltip-placement="right"><i class="fa-regular fa-music"></i></a>
+         <div id="tooltip-messages" role="tooltip" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 z-10 opacity-0 translate-x-1 pointer-events-none inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow transition-opacity duration-150 ease-in-out dark:bg-gray-700">
+            Messages
+         </div>
+        </li>
+      </ul>
+    </nav>
+
+<div>
+<main class="ms-12 p-12 font-mono">
+    <div class="container">
+        <div class="title">
+            <p class="text-3xl font-bold">Cybersecurity & CVE News</p>
+            <p class="text-lg mt-1 text-gray-700">Latest vulnerabilities, security threats, and critical updates in the cybersecurity landscape.</p>
+        </div>
+    </div>
+
+    <hr class="hr">
+
+    <div class="container">
+        <div class="title">
+            <p class="text-xl font-bold">CVE-2024-1234: Critical RCE in Popular Web Framework</p>
+        </div>
+        <div class="main-desc">
+            <p>A critical remote code execution vulnerability was discovered in the widely-used web framework affecting millions of deployments. The flaw allows unauthenticated attackers to execute arbitrary code with the privileges of the web server. Patches have been released and immediate updates are strongly recommended. Organizations should prioritize testing and deployment of security updates across all affected instances.</p>
+        </div>
+    </div>
+
+    <hr class="hr">
+
+    <div class="container">
+        <div class="title">
+            <p class="text-xl font-bold">Supply Chain Attack Targets Popular npm Package</p>
+        </div>
+        <div class="main-desc">
+            <p>Attackers successfully compromised credentials of a maintainer for a widely-used npm package, injecting malicious code into recent versions. The backdoor was designed to steal environment variables and credentials from build systems. Over 50 million weekly downloads were affected before the package was taken offline. This incident highlights the ongoing risks in open-source supply chains and the need for robust dependency scanning.</p>
+        </div>
+    </div>
+
+    <hr class="hr">
+
+    <div class="container">
+        <div class="title">
+            <p class="text-xl font-bold">Zero-Day Vulnerability in DNS Protocol Discovered</p>
+        </div>
+        <div class="main-desc">
+            <p>Security researchers unveiled a zero-day vulnerability in the core DNS protocol that enables cache poisoning attacks on recursive resolvers worldwide. The vulnerability could allow attackers to redirect users to malicious websites or intercept sensitive communications. Major DNS operators and ISPs have begun rolling out mitigations. System administrators are advised to review DNS security configurations and consider implementing DNSSEC.</p>
+        </div>
+    </div>
+
+    <hr class="hr">
+
+    <div class="container">
+        <div class="title">
+            <p class="text-xl font-bold">New Ransomware Variant Targets Cloud Infrastructure</p>
+        </div>
+        <div class="main-desc">
+            <p>A sophisticated ransomware campaign has emerged specifically targeting cloud storage services and backup systems. The attackers exploit weak cloud credentials and misconfigured IAM policies to gain access. Once inside, they encrypt backups to prevent recovery and demand hefty ransoms. Security teams should audit cloud access controls, enforce multi-factor authentication, and maintain offline backup copies.</p>
+        </div>
+    </div>
+
+    <hr class="hr">
+
+    <div class="container">
+        <div class="title">
+            <p class="text-xl font-bold">Exploit-as-a-Service Platform Shut Down by Law Enforcement</p>
+        </div>
+        <div class="main-desc">
+            <p>International law enforcement agencies coordinated to take down a major exploit-as-a-service platform that had been used by numerous cybercriminal groups for months. The platform offered pre-packaged exploits for zero-day vulnerabilities and post-exploitation tools. Several operators have been arrested and charged. This takedown demonstrates increased collaboration between agencies in combating cybercrime infrastructure.</p>
+        </div>
+    </div>
+
+    <hr class="hr">
+
+    <div class="container">
+        <div class="title">
+            <p class="text-xl font-bold">Kubernetes Cluster Misconfiguration Exposes Millions of Records</p>
+        </div>
+        <div class="main-desc">
+            <p>Security researchers discovered over 50 publicly exposed Kubernetes clusters running without proper access controls. The misconfigured clusters exposed sensitive data including API keys, database credentials, and customer information. Organizations were notified and most clusters have been secured. This incident underscores the importance of proper Kubernetes RBAC configuration and network policies in production environments.</p>
+        </div>
+    </div>
+
+</main>
+</div>
+
+
+    <script>
+        // buat tooltips
+      (function () {
+        const triggers = document.querySelectorAll('[data-tooltip-target]');
+        triggers.forEach(trigger => {
+          const id = trigger.getAttribute('data-tooltip-target');
+          const tip = document.getElementById(id.replace('#','')) || document.getElementById(id);
+          if (!tip) return;
+
+          const show = () => {
+            tip.classList.remove('opacity-0', 'translate-x-1', 'pointer-events-none');
+            tip.classList.add('opacity-100');
+          };
+          const hide = () => {
+            tip.classList.add('opacity-0', 'translate-x-1', 'pointer-events-none');
+            tip.classList.remove('opacity-100');
+          };
+
+          tip.classList.add('opacity-0', 'translate-x-1', 'pointer-events-none');
+          trigger.addEventListener('mouseenter', show);
+          trigger.addEventListener('focus', show);
+          trigger.addEventListener('mouseleave', hide);
+          trigger.addEventListener('blur', hide);
+          trigger.addEventListener('click', (e) => {
+            const href = trigger.getAttribute('href');
+            const isAnchor = trigger.tagName && trigger.tagName.toLowerCase() === 'a';
+            const isDummy = !href || href === '#' || href.trim() === '' || href.startsWith('javascript:') || href === 'javascript:void(0)';
+            if (isAnchor && !isDummy) {
+              hide();
+              return;
+            }
+            e.preventDefault();
+            if (tip.classList.contains('opacity-0')) show(); else hide();
+          });
+        });
+      })();
+ 
+  
+  </script>
+    
+  </body>
+</html>
